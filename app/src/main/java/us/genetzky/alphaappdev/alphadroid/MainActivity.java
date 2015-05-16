@@ -1,5 +1,6 @@
 package us.genetzky.alphaappdev.alphadroid;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -23,6 +24,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
      * current dropdown position.
      */
     private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
+    private static final int NAVIGATION_GCM = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,9 +94,17 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     public boolean onNavigationItemSelected(int position, long id) {
         // When the given dropdown item is selected, show its contents in the
         // container view.
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+        switch(position){
+            case NAVIGATION_GCM:
+                Intent startGCM;
+                startGCM = new Intent(this,GCM.class);
+                startActivity(startGCM);
+                break;
+            default:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                        .commit();
+        }
         return true;
     }
 
