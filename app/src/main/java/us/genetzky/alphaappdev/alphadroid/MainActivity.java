@@ -4,27 +4,25 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener {
-
     /**
      * The serialization (saved instance state) Bundle key representing the
      * current dropdown position.
      */
     private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
-    private static final int NAVIGATION_GCM = 2;
+    private static final int NAVIGATION_DASHBOARD = 0;
+    private static final int NAVIGATION_BT = 1;
+    private static final int NAVIGATION_SMS = 2;
+    private static final int NAVIGATION_SETTINGS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +45,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                                 getString(R.string.title_section1),
                                 getString(R.string.title_section2),
                                 getString(R.string.title_section3),
+                                getString(R.string.title_section4),
                         }),
                 this);
     }
@@ -84,9 +83,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent startSettings;
+            //startGCM = new Intent(this,GCM.class);
+            startSettings = new Intent();
+            startSettings.setClassName("us.genetzky.alphaappdev.alphadroid", "us.genetzky.alphaappdev.alphadroid.SettingsActivity");
+            startActivity(startSettings);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -95,10 +98,24 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         // When the given dropdown item is selected, show its contents in the
         // container view.
         switch(position){
-            case NAVIGATION_GCM:
-                Intent startGCM;
-                startGCM = new Intent(this,GCM.class);
-                startActivity(startGCM);
+            case NAVIGATION_BT:
+                Intent startBT;
+                //startGCM = new Intent(this,GCM.class);
+                startBT = new Intent();//(context,GCM.class);
+                startBT.setClassName("us.genetzky.alphaappdev.alphadroid","us.genetzky.alphaappdev.alphadroid.BT");
+                startBT.putExtra(BT.EXTRA_STATUS,"No Info");
+                startActivity(startBT);
+                break;
+            case NAVIGATION_SMS:
+                Intent startSMS;
+                //startGCM = new Intent(this,GCM.class);
+                startSMS = new Intent();//(context,GCM.class);
+                startSMS.setClassName("us.genetzky.alphaappdev.alphadroid","us.genetzky.alphaappdev.alphadroid.SMS");
+                startSMS.putExtra(SMS.EXTRA_STATUS,getString(R.string.sms_nonew));
+                startActivity(startSMS);
+                break;
+            case NAVIGATION_SETTINGS:
+
                 break;
             default:
                 getSupportFragmentManager().beginTransaction()
@@ -140,5 +157,4 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
             return rootView;
         }
     }
-
 }

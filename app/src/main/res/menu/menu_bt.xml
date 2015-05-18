@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="us.genetzky.alphaappdev.alphadroid.BT">
+
+    <item android:id="@+id/bt_enable" android:title="@string/bt_enable"
+    android:orderInCategory="80" app:showAsAction="never" />
+    <item android:id="@+id/bt_showpaired" android:title="@string/bt_showpaired"
+        android:orderInCategory="90" app:showAsAction="never" />
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>

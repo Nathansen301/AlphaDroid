@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settingskey_display_name">display_name</string>
+    <string name="settingskey_device_email">device_email</string>
+    <string name="settingskey_device">device</string>
+
+    <string name="settingskey_notifications_new_message">notifications_new_message</string>
+    <string name="settingskey_notifications_new_message_ringtone">notifications_new_message_ringtone</string>
+    <string name="settingskey_notifications_new_message_vibrate">notifications_new_message_vibrate</string>
+
+
+    <string name="settingskey_sync_frequency">sync_frequency</string>
+    <string name="settingskey_sync_size">sync_size</string>
+</resources>
