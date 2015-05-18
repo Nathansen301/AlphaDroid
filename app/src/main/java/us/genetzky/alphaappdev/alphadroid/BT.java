@@ -4,6 +4,8 @@ import android.app.ListFragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -85,7 +87,26 @@ public class BT extends ActionBarActivity {
                 Toast.makeText(this, "You dun fucked up", Toast.LENGTH_LONG).show();
             }
         }
-
     }
+    void simpleMessage(String data){
+        ((TextView)findViewById(R.id.bt_status)).setText(data);
+    }
+    class BTHandler extends Handler{
+        public static final int SOCKET_CONNECTED = 0;
+        public static final int DATA_RECEIVED = 1;
+        public static final int MESSAGE_READ = 2;
 
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SOCKET_CONNECTED:
+                    //Update UI to indicate connection
+                    break;
+                case DATA_RECEIVED:
+                    String data = (String) msg.obj;
+                    simpleMessage(data);
+                    break;
+            }
+        }
+    }
 }

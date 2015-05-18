@@ -13,7 +13,7 @@ import android.util.Log;
  * TODO: Customize class - update intent actions, extra parameters and static
  * helper methods.
  */
-public class AlphaDroidService extends IntentService {
+public class AlphaDroidService extends IntentService{
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     private static final String ACTION_TX = "us.genetzky.alphaappdev.alphadroid.action.TX";
     private static final String ACTION_RC = "us.genetzky.alphaappdev.alphadroid.action.RC";
@@ -35,7 +35,6 @@ public class AlphaDroidService extends IntentService {
         intent.putExtra(EXTRA_2DATA, data);
         context.startService(intent);
     }
-
     /**
      * Starts this service to perform action RC with the given parameters. If
      * the service is already performing a task this action will be queued.
@@ -50,11 +49,9 @@ public class AlphaDroidService extends IntentService {
         intent.putExtra(EXTRA_2DATA, data);
         context.startService(intent);
     }
-
     public AlphaDroidService() {
         super("AlphaDroidService");
     }
-
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {

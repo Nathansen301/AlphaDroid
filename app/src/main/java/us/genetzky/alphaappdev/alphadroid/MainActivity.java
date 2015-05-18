@@ -1,5 +1,6 @@
 package us.genetzky.alphaappdev.alphadroid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -83,11 +84,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent startSettings;
-            //startGCM = new Intent(this,GCM.class);
-            startSettings = new Intent();
-            startSettings.setClassName("us.genetzky.alphaappdev.alphadroid", "us.genetzky.alphaappdev.alphadroid.SettingsActivity");
-            startActivity(startSettings);
+            MyAlphaDroid.intent_startSettings(this);
             return true;
         }
         return super.onOptionsItemSelected(item);
